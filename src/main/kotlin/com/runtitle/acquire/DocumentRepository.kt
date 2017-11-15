@@ -16,7 +16,6 @@ class DocumentRepository(path: String) {
                 idPathMap[it[9].replace("/files/", "")] = it[8]
             }
         }
-        println("Id-Path Map has ${idPathMap.size} entries")
     }
 
     fun getDocuments() = directory.resolve("ocr").walk()
