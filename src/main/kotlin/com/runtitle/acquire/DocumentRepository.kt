@@ -9,6 +9,7 @@ class DocumentRepository(path: String) {
 
     private val idPathMap = mutableMapOf<String, String>()
     private val directory = File(path)
+    val docCount: Int = directory.resolve("files").listFiles({ file -> file.name.endsWith("pdf")}).size
 
     init {
         directory.resolve("data.csv").readLines().map { data ->
@@ -24,14 +25,3 @@ class DocumentRepository(path: String) {
 
 }
 
-data class Lease(val primaryTerm: Int, // #1
-                 val lessor: String, // #3
-                 val lesseeAddress: String, // #3
-                 val royalty: String, // #1
-                 val legal: String, // #2
-                 val primaryTermExtension: String, // #2
-                 val lessorAddress: String, // #3
-                 val effectiveDate: String, // #1
-                 val id: String,
-                 val file: String,
-                 val lessee: String) // #3
